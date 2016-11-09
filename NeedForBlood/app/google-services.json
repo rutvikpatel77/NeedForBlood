@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "399166278869",
+    "firebase_url": "https://needforblood-ae0b1.firebaseio.com",
+    "project_id": "needforblood-ae0b1",
+    "storage_bucket": "needforblood-ae0b1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:399166278869:android:631bfd962c3fc640",
+        "android_client_info": {
+          "package_name": "com.example.android.needforblood"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "399166278869-vn04vn0coca926sgjhm74k6qc3vrogro.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDbuv7rUv9Z61zdCW9BOjRR-9AsegHdR7w"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
