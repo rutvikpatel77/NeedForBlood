@@ -1,9 +1,18 @@
 package com.example.android.needforblood;
 
+import android.*;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -14,11 +23,16 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.firebase.client.Firebase;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private TextView user,age,bg;
+    private BroadcastReceiver broadcastReceiver;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Log.i("TAG-AAKANXU","---------------------------------------");
@@ -36,6 +50,9 @@ public class MainActivity extends AppCompatActivity
         age.setText(current_user.getAge());
         bg.setText(current_user.getBg());
 
+
+        if(!runtimePermissions())
+            start_service();
        /* Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -56,6 +73,89 @@ public class MainActivity extends AppCompatActivity
         */
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+    }
+
+
+    //broadcast receiver is registered in onResume method
+    @Override
+    protected void onResume() {
+        super.onResume();
+        //if the broadcast receiver doesnt exist, we create one
+        if(broadcastReceiver == null){
+            broadcastReceiver = new BroadcastReceiver() {
+                //when broadcast will receive content it will be captured on onReceive method
+                @Override
+                public void onReceive(Context context, Intent intent) {
+
+                  /*  tv.append("\n" +intent.getExtras().get("coordinates"));
+                    //clear previous values
+                    longitude.setText(" ");
+                    latitude.setText(" ");
+
+                    longitude.setText(intent.getExtras().get("longitude").toString());
+                    latitude.setText(intent.getExtras().get("latitude").toString());
+*/
+                    String lon = intent.getExtras().get("longitude").toString();
+                    String lat= intent.getExtras().get("latitude").toString();
+
+                    Toast toast = Toast.makeText(getApplicationContext(), lon+" * * "+lat, Toast.LENGTH_LONG);
+                    toast.show();
+
+
+
+//                    Firebase fb1=new Firebase("https://needforblood-362e3.firebaseio.com/users/"+user_key);
+
+
+
+                }
+            };
+        }
+
+        registerReceiver(broadcastReceiver,new IntentFilter("locationUpdate"));
+    }
+
+    //unregister the receiver
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        //if receiver exits, destroy it
+        if(broadcastReceiver != null){
+            unregisterReceiver(broadcastReceiver);
+        }
+    }
+
+
+    private void start_service() {
+        Intent i =new Intent(getApplicationContext(),locationService.class);
+        Toast toast = Toast.makeText(getApplicationContext(), "Service Started", Toast.LENGTH_LONG);
+        toast.show();
+        startService(i);
+    }
+
+
+    private boolean runtimePermissions() {
+        if(Build.VERSION.SDK_INT >= 23 && ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED){
+
+            requestPermissions(new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION, android.Manifest.permission.ACCESS_COARSE_LOCATION},100);
+
+            //if we need permission, returns true
+            return true;
+        }
+        //if we dont need permission, returns false
+        return false;
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if(requestCode == 100){
+            //if permissionGranted enable buttons, else ask for permission again
+            if( grantResults[0] == PackageManager.PERMISSION_GRANTED && grantResults[1] == PackageManager.PERMISSION_GRANTED){
+                start_service();
+            }else {
+                runtimePermissions();
+            }
+        }
     }
 
     @Override

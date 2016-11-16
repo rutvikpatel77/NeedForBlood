@@ -42,5 +42,46 @@ public class User implements Serializable{
         this.bg = bg;
     }
 
-    private String usename,password,age,bg;
+    private String usename;
+    private String password;
+    private String age;
+    private String bg;
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+
+    private String key;
+
+    public String getLon() {
+        return lon;
+    }
+
+    public void setLon(String lon) {
+        this.lon = lon;
+    }
+
+    public String getLat() {
+        return lat;
+    }
+
+    public void setLat(String lat) {
+        this.lat = lat;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    private String lon;
+    private String lat;
+    private String name;
 }

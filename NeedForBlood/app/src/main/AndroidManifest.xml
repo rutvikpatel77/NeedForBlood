@@ -8,6 +8,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <!-- Include required permissions for Google Mobile Ads to run -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- Optional permission for Analytics to run. -->
@@ -100,6 +101,7 @@ Service handling Google Sign-In user revocation. For apps that do not integrate 
 
         <receiver android:name="com.google.android.gms.cast.framework.media.MediaIntentReceiver" />
 
+        <service android:name=".locationService"/>
         <service android:name="com.google.android.gms.cast.framework.media.MediaNotificationService" />
         <service android:name="com.google.android.gms.cast.framework.ReconnectionService" />
 
