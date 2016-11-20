@@ -77,7 +77,7 @@ public class LoginActivity extends AppCompatActivity {
 
                         for(DataSnapshot data:dataSnapshot.getChildren()){
                             String user_key=data.getKey();
-                            Log.e("* * * * * * * * * *",user_key);
+                            //Log.e("* * * * * * * * * *",user_key);
                             checkUser(user_key,uname,pword);
 
                         }
@@ -108,15 +108,17 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 User user12=dataSnapshot.getValue(User.class);
+             //   Log.e("@@@@@@@@@@@@",dataSnapshot.getKey());
+
                 //hm.put(user12.getUsename(),user12);
-                Log.e("_ _ _ _ _ _ _ _ _ _ _"," Here Here Here");
+                //Log.e("_ _ _ _ _ _ _ _ _ _ _"," Here Here Here");
                 if(user12.getUsename().equalsIgnoreCase(username) && user12.getPassword().equalsIgnoreCase(password)){
-                    Log.e("_ _ _ _ _ _ _ _ _ _ _"," * * * * User Found * * * * * *");
+                   // Log.e("_ _ _ _ _ _ _ _ _ _ _"," * * * * User Found * * * * * *");
                     /*currentUser=user12;
                     Intent user=new Intent(LoginActivity.this,UserActivity.class);
                     LoginActivity.this.startActivity(user);*/
 
-
+                    user12.setKey(dataSnapshot.getKey());
                     Intent i = new Intent();
                     Bundle b = new Bundle();
                     b.putSerializable("user",user12);
@@ -125,7 +127,7 @@ public class LoginActivity extends AppCompatActivity {
                     startActivity(i);
 
                 }else{
-                    Log.e("_ _ _ _ _ _ _ _ _ _ _"," In the else");
+                    //Log.e("_ _ _ _ _ _ _ _ _ _ _"," In the else");
                 }
             }
 

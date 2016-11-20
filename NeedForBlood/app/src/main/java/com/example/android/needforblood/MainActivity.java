@@ -25,13 +25,20 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+import com.firebase.client.ValueEventListener;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private TextView user,age,bg;
     private BroadcastReceiver broadcastReceiver;
+    private User current_user;
+    private DatabaseReference mDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,20 +47,20 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
 
 
-        User current_user = (User)getIntent().getSerializableExtra("user");
+        current_user = (User)getIntent().getSerializableExtra("user");
 
-        user = (TextView)findViewById(R.id.username);
-        age = (TextView) findViewById(R.id.agev);
+       user = (TextView)findViewById(R.id.username);
+       /* age = (TextView) findViewById(R.id.agev);
         bg=(TextView) findViewById(R.id.bgv);
-
-        user.setText(current_user.getUsename());
-        age.setText(current_user.getAge());
-        bg.setText(current_user.getBg());
+*/
+        user.setText(current_user.getName());
+        //age.setText(current_user.getKey());
+        //bg.setText(current_user.getBg());
 
 
         if(!runtimePermissions())
             start_service();
-       /* Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -70,7 +77,7 @@ public class MainActivity extends AppCompatActivity
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
-        */
+
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
     }
@@ -98,12 +105,20 @@ public class MainActivity extends AppCompatActivity
                     String lon = intent.getExtras().get("longitude").toString();
                     String lat= intent.getExtras().get("latitude").toString();
 
+                    current_user.setLon(lon);
+                    current_user.setLat(lat);
                     Toast toast = Toast.makeText(getApplicationContext(), lon+" * * "+lat, Toast.LENGTH_LONG);
                     toast.show();
 
 
 
-//                    Firebase fb1=new Firebase("https://needforblood-362e3.firebaseio.com/users/"+user_key);
+                    Firebase ref = new Firebase("https://needforblood-362e3.firebaseio.com/users/").child(current_user.getKey());
+
+                    //Firebase fb1=new Firebase("https://needforblood-362e3.firebaseio.com/users/"+current_user.getKey());
+
+                    //mDatabase = FirebaseDatabase.getInstance().getReference("https://needforblood-362e3.firebaseio.com/users/"+current_user.getKey());
+
+                    ref.setValue(current_user);
 
 
 
