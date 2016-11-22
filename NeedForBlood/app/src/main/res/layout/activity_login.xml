@@ -37,13 +37,34 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
         android:ems="10"
         android:id="@+id/password"
         android:hint="Password"
+        android:inputType="textPassword"
         android:layout_below="@+id/username"
         android:layout_alignLeft="@+id/title"
         android:layout_alignStart="@+id/title" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/msg"
+        android:layout_marginBottom="15dp"
+        android:layout_above="@+id/needtoreg"
+        android:layout_alignRight="@+id/title"
+        android:layout_alignEnd="@+id/title"
+        android:layout_marginRight="14dp"
+        android:layout_marginEnd="14dp" />
+
+
+    <Button
+        android:text="Sign In"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/signin"
+        android:layout_marginTop="23dp"
+        android:layout_below="@+id/password"
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:text="Not Registered? Sign up Here :"
@@ -59,37 +80,9 @@
         android:text="Sign Up"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="41dp"
         android:id="@+id/signup"
         android:layout_below="@+id/signin"
         android:layout_toRightOf="@+id/needtoreg"
         android:layout_toEndOf="@+id/needtoreg" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/msg"
-        android:layout_marginBottom="15dp"
-        android:layout_above="@+id/needtoreg"
-        android:layout_alignRight="@+id/title"
-        android:layout_alignEnd="@+id/title"
-        android:layout_marginRight="14dp"
-        android:layout_marginEnd="14dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/label2"
-        android:layout_below="@id/signin"
-        android:text="Your Blood group is : "/>
-
-    <Button
-        android:text="Sign In"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/signin"
-        android:layout_marginTop="23dp"
-        android:layout_below="@+id/password"
-        android:layout_toRightOf="@+id/label2"
-        android:layout_toEndOf="@+id/label2" />
 </RelativeLayout>

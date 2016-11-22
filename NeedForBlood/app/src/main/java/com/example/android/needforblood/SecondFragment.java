@@ -36,23 +36,26 @@ public class SecondFragment extends Fragment {
     @Override
     
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstance){
-        myView = inflater.inflate(R.layout.second_layout,container,false);
+        //myView = inflater.inflate(R.layout.second_layout,container,false);
+
+        myView =getActivity().getLayoutInflater().inflate(R.layout.second_layout,null);
+
+        //name=(EditText)view.findViewById(R.id.nameTV);
 
         search = (TextView) myView.findViewById(R.id.search);
         donor = (TextView) myView.findViewById(R.id.donor);
         search_btn = (Button) myView.findViewById(R.id.search_btn);
 
-        search_user = search.getText().toString();
 
-        Log.e(" @ @  @ @ @ @ @ @",search_user);
+
+      //  Log.e(" @ @  @ @ @ @ @ @",search_user);
         search_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-
-
+                search_user = search.getText().toString();
                 fb=new Firebase("https://needforblood-362e3.firebaseio.com/users");
-
+                Log.e(" @ @  @ @ @ @ @ @",search_user);
                 fb.addValueEventListener(new ValueEventListener() {
 
 
@@ -72,10 +75,10 @@ public class SecondFragment extends Fragment {
                 });
 
                 if(exist){
-
-                    //donor.setText(search_user);
+                    Log.e("_ _ _ CHECK USER _ _ _","* * * *");
+                    donor.setText(search_user);
                 }else{
-                  //  donor.setText("No user Found");
+                    donor.setText("No user Found");
                 }
             }
         });
@@ -94,13 +97,13 @@ public class SecondFragment extends Fragment {
                 User user12=dataSnapshot.getValue(User.class);
 
                 if(user12.getUsename().equalsIgnoreCase(search_user1)){
-                    Log.e("_ _ _ _ _ _ _ _ _ _ _"," * * * * User Found * * * * * *");
+                    //donor.setText(search_user1);
                     /*currentUser=user12;
                     Intent user=new Intent(LoginActivity.this,UserActivity.class);
                     LoginActivity.this.startActivity(user);*/
                     exist=true;
                 }else{
-                   Log.e("_ _ _ CHECK USER _ _ _",user12.getUsename()+":"+search_user1);
+                   //Log.e("_ _ _ CHECK USER _ _ _",user12.getUsename()+":"+search_user1);
                 }
             }
 

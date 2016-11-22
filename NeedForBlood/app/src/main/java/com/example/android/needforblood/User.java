@@ -47,6 +47,16 @@ public class User implements Serializable{
     private String age;
     private String bg;
 
+    public String getPhone() {
+        return Phone;
+    }
+
+    public void setPhone(String phone) {
+        Phone = phone;
+    }
+
+    private String Phone;
+
     public String getKey() {
         return key;
     }

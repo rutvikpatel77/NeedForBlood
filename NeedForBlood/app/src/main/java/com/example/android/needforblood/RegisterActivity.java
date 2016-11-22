@@ -21,7 +21,7 @@ import java.util.Map;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    private EditText username,password,age,bg,name;
+    private EditText username,password,age,bg,name,phone;
     Button register;
     private Firebase fb,fb1;
     List<String> users=new ArrayList<String>();;
@@ -75,6 +75,7 @@ public class RegisterActivity extends AppCompatActivity {
         age = (EditText) findViewById(R.id.age);
         bg = (EditText) findViewById(R.id.bloodgroup);
         name=(EditText) findViewById(R.id.name);
+        phone =(EditText) findViewById(R.id.phone);
 
         register =(Button) findViewById(R.id.register);
         fb=new Firebase("https://needforblood-362e3.firebaseio.com/users");
@@ -88,6 +89,7 @@ public class RegisterActivity extends AppCompatActivity {
                 String age1=age.getText().toString();
                 String bg1=bg.getText().toString();
                 String name1=name.getText().toString();
+                String phone1=phone.getText().toString();
 
                 User new_user =new User();
                 new_user.setUsename(username1);
@@ -97,7 +99,7 @@ public class RegisterActivity extends AppCompatActivity {
                 new_user.setName(name1);
                 new_user.setLat("33.424564");
                 new_user.setLon("-111.928001");
-
+                new_user.setPhone(phone1);
                 //Log.e("# # # # # ",users.get(0));
 
                 uniqueUser();
