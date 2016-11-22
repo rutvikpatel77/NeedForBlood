@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Log.i("TAG-AAKANXU","---------------------------------------");
+        //Log.i("TAG-AAKANXU","---------------------------------------");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -234,6 +234,10 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_send_invite) {
 
             fragmentManager.beginTransaction().replace(R.id.content_frame,new SendInvite()).commit();
+
+        } else if (id == R.id.nav_eligibility) {
+
+            fragmentManager.beginTransaction().replace(R.id.content_frame,new Eligibility()).commit();
 
         }
 

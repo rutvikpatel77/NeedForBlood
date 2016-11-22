@@ -2,12 +2,35 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent">
 
-    <TextView
-        android:text="Invite people to use app using Messaging"
+  <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:id="@+id/label"
+      android:text="Invite your Contacts to use this App"
+      android:layout_centerHorizontal="true"
+      android:layout_marginTop="20dp"
+      android:textSize="20dp"/>
+
+    <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:id="@+id/phone"
+        android:hint="Enter Phone Number"
+        android:layout_below="@+id/label"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="147dp"
-        android:id="@+id/textView2" />
+        android:layout_marginTop="40dp"
+        android:textSize="30dp"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/invite"
+        android:layout_below="@id/phone"
+        android:layout_centerHorizontal="true"
+        android:text="Send Invite"
+        android:layout_marginTop="25dp"
+
+        />
+
 </RelativeLayout>

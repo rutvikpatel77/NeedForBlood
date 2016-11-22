@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_donor_info"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.android.needforblood.DonorInfoActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/name"
+        android:text="Donor Name : "
+        android:textSize="15dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/name_v"
+        android:layout_toEndOf="@+id/name"
+        android:layout_toRightOf="@+id/name"
+        android:layout_marginLeft="10dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/bg"
+        android:layout_below="@id/name"
+        android:layout_marginTop="15dp"
+        android:text="Blood Group : "
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/bg_v"
+        android:layout_toEndOf="@+id/bg"
+        android:layout_marginTop="15dp"
+        android:layout_below="@id/name"
+        android:layout_toRightOf="@+id/bg"
+        android:layout_marginLeft="10dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/age"
+        android:layout_below="@id/bg"
+        android:layout_marginTop="15dp"
+        android:text="Age : "
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/age_v"
+        android:layout_toEndOf="@+id/age"
+        android:layout_marginTop="15dp"
+        android:layout_below="@id/bg"
+        android:layout_toRightOf="@+id/bg"
+        android:layout_marginLeft="10dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/phone"
+        android:layout_below="@id/age"
+        android:layout_marginTop="15dp"
+        android:text="Contact Number : "
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/phone_v"
+        android:layout_toEndOf="@+id/phone"
+        android:layout_marginTop="15dp"
+        android:layout_below="@id/age"
+        android:layout_toRightOf="@+id/phone"
+        android:layout_marginLeft="10dp"/>
+
+
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/call"
+        android:layout_below="@id/phone"
+        android:text="Call"
+        android:layout_marginTop="15dp"
+        />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/sms"
+        android:layout_marginTop="15dp"
+        android:layout_below="@id/phone"
+        android:layout_toRightOf="@+id/call"
+        android:layout_marginLeft="10dp"
+        android:text="Message"
+        />
+
+
+
+</RelativeLayout>
