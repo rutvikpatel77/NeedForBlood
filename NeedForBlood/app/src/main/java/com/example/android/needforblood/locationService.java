@@ -65,7 +65,7 @@ public class locationService extends Service {
 
         //to start the process we call the manager with requestLocationUpdates method, it will update every 1 seconds
         //noinspection MissingPermission
-        locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER,10000,0,listener);
+        locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER,1000000,0,listener);
 
     }
 

@@ -81,7 +81,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
                     final User user12=data.getValue(User.class);
                     LatLng sydney = new LatLng(Double.parseDouble(user12.getLat()),Double.parseDouble(user12.getLon()));
-                    mMap.addMarker(new MarkerOptions().position(sydney).title(user12.getName()));
+                    mMap.addMarker(new MarkerOptions().position(sydney).title(user12.getName()+" :"+user12.getBg()));
                     mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
                    /* mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
                         @Override
@@ -110,6 +110,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }
         });
 
+        LatLng l=new LatLng(33.424564,-111.928001);
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(l,14));
+       // mMap.animateCamera(CameraUpdateFactory.zoomIn());
+        //mMap.animateCamera(CameraUpdateFactory.zoomTo(15),2000,null);
 
 
     }

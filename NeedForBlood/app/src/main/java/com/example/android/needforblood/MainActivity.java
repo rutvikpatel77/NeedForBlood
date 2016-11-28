@@ -107,8 +107,8 @@ public class MainActivity extends AppCompatActivity
 
                     current_user.setLon(lon);
                     current_user.setLat(lat);
-                    Toast toast = Toast.makeText(getApplicationContext(), lon+" * * "+lat, Toast.LENGTH_LONG);
-                    toast.show();
+                    //Toast toast = Toast.makeText(getApplicationContext(), lon+" * * "+lat, Toast.LENGTH_LONG);
+                    //toast.show();
 
 
 

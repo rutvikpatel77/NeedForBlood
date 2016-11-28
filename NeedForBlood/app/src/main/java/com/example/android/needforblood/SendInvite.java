@@ -31,12 +31,13 @@ public class SendInvite extends Fragment {
     @Override
     
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstance){
-        myView = inflater.inflate(R.layout.send_invite,container,false);
+       // myView = inflater.inflate(R.layout.send_invite,container,false);
 
+        myView =getActivity().getLayoutInflater().inflate(R.layout.send_invite,null);
         Button clickButton = (Button) myView.findViewById(R.id.invite);
-        EditText phone=(EditText) myView.findViewById(R.id.phone);
+       // EditText phone=(EditText) myView.findViewById(R.id.phone);
 
-        final String ph1=phone.getText().toString();
+        //final String ph1=phone.getText().toString();
 
 
         // use ph as phone number
@@ -60,7 +61,7 @@ public class SendInvite extends Fragment {
                        Toast.makeText(getActivity(),"Sending...",Toast.LENGTH_LONG).show();
                         //startActivity(smsIntent);
 
-                        Uri uri = Uri.parse("smsto:"+ph1);
+                        Uri uri = Uri.parse("smsto:");
                         Intent it = new Intent(Intent.ACTION_SENDTO, uri);
                         it.putExtra("sms_body", "Find the nearest Blood Donors using this new App called 'Need For Blood'");
                         startActivity(it);

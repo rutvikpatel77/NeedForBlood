@@ -8,10 +8,10 @@
       android:id="@+id/label"
       android:text="Invite your Contacts to use this App"
       android:layout_centerHorizontal="true"
-      android:layout_marginTop="20dp"
+      android:layout_marginTop="40dp"
       android:textSize="20dp"/>
 
-    <EditText
+    <!--<EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/phone"
@@ -21,16 +21,15 @@
         android:layout_marginTop="40dp"
         android:textSize="30dp"
         />
+-->
+  <Button
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:id="@+id/invite"
+      android:text="Send Invite"
+      android:layout_marginTop="50dp"
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/invite"
-        android:layout_below="@id/phone"
-        android:layout_centerHorizontal="true"
-        android:text="Send Invite"
-        android:layout_marginTop="25dp"
-
-        />
+      android:layout_below="@+id/label"
+      android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
